@@ -8,16 +8,49 @@ body{
   font-family: 'Roboto', sans-serif;
 }
 
+header{
+  width: 100%;
+  background-color: white;
+  display: flex;
+}
+
+header img{
+  height: 70px;
+}
+
+footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+footer span{
+  text-align: center;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
 .main-wrapper{
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: bisque;
+  background-color: limegreen;
 }
 
-.main-wrapper .game-control{
+.game-wrapper{
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  overflow: scroll;
+}
+
+.game-wrapper .game-control{
   text-align: center;
   margin-bottom: 60px;
   font-size: 1.6rem;
@@ -25,7 +58,7 @@ body{
 
 .input{
   margin-top: 20px;
-  border: 2px solid rgb(115, 185, 9);
+  border: 2px solid orange;
   border-radius: 10px;
   padding: 5px 10px;
   background-color: transparent;
@@ -35,14 +68,14 @@ body{
 
 .input:hover{
   transition: all .3s;
-  background-color: rgb(115, 185, 9);
+  background-color: orange;
   color: white;
 }
 
 .container{
   width: 600px;
   aspect-ratio: 1/1;
-  background-color: darkslategray;
+  background-color: transparent;
   opacity: 0;
   position: relative;
 }
@@ -58,12 +91,12 @@ body{
 
 .container .box{
   aspect-ratio: 1 / 1;
-  border: 1px solid white;
+  border: 1px solid black;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: black;
   position: relative;
 }
 
@@ -96,6 +129,6 @@ body{
 }
 
 #output{
-  padding-top: 30px;
-  font-size: 2.5rem;
+  padding: 30px 0;
+  font-size: 2rem;
 }

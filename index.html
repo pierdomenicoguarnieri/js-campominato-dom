@@ -15,19 +15,30 @@
 
   <body>
     <div class="main-wrapper">
-      <div class="game-control">
-        <h1>Gioca a Campo Minato!</h1>
-        <select class="input" id="select">
-          <option selected value="1">Facile (100 blocchi)</option>
-          <option value="2">Medio (81 blocchi)</option>
-          <option value="3">Difficile (49 blocchi)</option>
-        </select>
-        <button class="input" type="button" id="btn">Gioca!</button>
+
+      <header>
+        <img src="assets/img/logo-boolean.png" alt="Logo Boolean" title="Logo Boolean">
+      </header>
+
+      <div class="game-wrapper">
+        <div class="game-control">
+          <h1>Gioca a Campo Minato!</h1>
+          <select class="input" id="select">
+            <option selected value="1">Facile (100 blocchi)</option>
+            <option value="2">Medio (81 blocchi)</option>
+            <option value="3">Difficile (49 blocchi)</option>
+          </select>
+          <button class="input" type="button" id="btn">Gioca!</button>
+        </div>
+
+        <div class="container">
+        </div>
+        <h1 id="output"></h1>
       </div>
 
-      <div class="container">
-      </div>
-      <h1 id="output"></h1>
+      <footer>
+        <span>Made with &hearts; by Pierdomenico Guarnieri</span>
+      </footer>
     </div>
     
     <script src="assets/js/script.js"></script>
