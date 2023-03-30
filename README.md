@@ -41,3 +41,6 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
 
 ## References
 
+[Developer Mozzilla EventTarger.removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+
+[W3Schools HTM DOM Element getAttribute()](https://www.w3schools.com/jsref/met_element_getattribute.asp)
