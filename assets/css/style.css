@@ -1,0 +1,77 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+.main-wrapper{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: bisque;
+}
+
+.main-wrapper .game-control{
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 1.6rem;
+}
+
+.input{
+  margin-top: 20px;
+  border: 2px solid rgb(115, 185, 9);
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.input:hover{
+  transition: all .3s;
+  background-color: rgb(115, 185, 9);
+  color: white;
+}
+
+.container{
+  width: 600px;
+  aspect-ratio: 1/1;
+  background-color: darkslategray;
+  opacity: 0;
+}
+
+.container .box{
+  aspect-ratio: 1 / 1;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.box.lvlsimple{
+  width: calc(100% / 10);
+}
+
+.box.lvlmedium{
+  width: calc(100% / 9);
+}
+
+.box.lvlhard{
+  width: calc(100% / 7);
+}
+
+.fade-in{
+  transition-delay: .5s;
+  transition: all 3s;
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 1;
+}
+
+.box.clicked{
+  background-color: dodgerblue;
+}
