@@ -133,8 +133,6 @@ function clickHandler(box, bombs, limit){
     if(!classArray.includes("clicked")) points++;
     console.log(points);
     box.classList.add("clicked");
-    points++;
-    box.removeEventListener("click", function(){});
   }
 }
 
@@ -168,4 +166,5 @@ function reset(array){
   bombs = [];
   points = 0;
   container.innerHTML = "";
+  output.innerHTML = "";
 }
