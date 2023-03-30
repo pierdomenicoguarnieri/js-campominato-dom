@@ -16,6 +16,10 @@ let points = 0;
 
 btnPlay.addEventListener("click", generatePlayArea)
 
+/**
+ * This function generates the play-area
+ * 
+ */
 function generatePlayArea(){
   reset(blackList);
   container.classList.add("fade-in");
@@ -114,14 +118,25 @@ function verifyRandomNumber(array, limit){
   return number;
 }
 
+/**
+ * This function creates 16 bombs that are unique.
+ * 
+ * @param {number} limit 
+ */
 function createBomb(limit){
     while(bombs.length !== 16){
       const bombId = Math.floor(Math.random() * limit) + 1;
       if(!bombs.includes(bombId)) bombs.push(bombId);
-      console.log(bombs);
     }
 }
 
+/**
+ * This function handles the various cases that can happen when the user clicks a box.
+ * 
+ * @param {element} box 
+ * @param {array} bombs 
+ * @param {number} limit 
+ */
 function clickHandler(box, bombs, limit){
   const boxCollection = document.querySelectorAll(".box");
   if(bombs.includes(parseInt(box.getAttribute("tagRandomNumber")))){
@@ -129,13 +144,25 @@ function clickHandler(box, bombs, limit){
   }else if(points === boxCollection.length - bombs.length){
     gameEnd(box, bombs, limit,boxCollection, true)
   }else{
-    const classArray = box.className;
-    if(!classArray.includes("clicked")) points++;
-    console.log(points);
+    if(!box.className.includes("clicked")) points++;
     box.classList.add("clicked");
   }
 }
 
+/**
+ * This function handles the conditions at the end of a game, it can have 2 outcomes:
+ * - If you click a bomb it displays a message of defeat
+ * 
+ * - If you click all the boxes without clicking a bomb it displays a message of victory
+ * 
+ * In each case it also adds an overlya to the grid that prevents the user to keep playing even if the game is over. 
+ * 
+ * @param {element} box 
+ * @param {array} bombs 
+ * @param {number} limit 
+ * @param {array} boxCollection 
+ * @param {boolean} flag 
+ */
 function gameEnd(box, bombs, limit, boxCollection, flag){
   const overlay = document.createElement("div");
   overlay.className = "overlay";
@@ -161,6 +188,11 @@ function gameEnd(box, bombs, limit, boxCollection, flag){
   output.innerHTML = message;
 }
 
+/**
+ * This function resets all the variables in order to generate a new grid
+ * 
+ * @param {array} array 
+ */
 function reset(array){
   array.splice(0,array.length);
   bombs = [];
