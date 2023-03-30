@@ -6,11 +6,13 @@ const container = document.querySelector(".container");
 
 const blackList = [];
 
+let bombs = [];
+
 let randomNumber;
 
-btnPlay.addEventListener("click", btnPlay)
+btnPlay.addEventListener("click", generatePlayArea)
 
-function btnPlay(){
+function generatePlayArea(){
   reset(blackList);
   container.classList.add("fade-in");
 
@@ -42,6 +44,9 @@ function btnPlay(){
     const box = createElement(blackList[i], parseInt(select.value));
     container.appendChild(box);
   }
+
+  bombs = createBomb(boxNumber);
+
 }
 
 /**
@@ -71,6 +76,8 @@ function createElement(randomNumber, lvl){
     break;
   }
   box._tagRandomNumber = randomNumber;
+
+  box.innerHTML =`${box._tagRandomNumber}`
   box.addEventListener("click", function(){
     console.log(box._tagRandomNumber);
     box.classList.toggle("clicked");
@@ -104,7 +111,16 @@ function verifyRandomNumber(array, limit){
   return number;
 }
 
+function createBomb(limit){
+    while(bombs.length !== 16){
+      const bombId = Math.floor(Math.random() * limit) + 1;
+      if(!bombs.includes(bombId)) bombs.push(bombId);
+      console.log(bombs);
+    }
+}
+
 function reset(array){
-  array.splice(0,array.length)
+  array.splice(0,array.length);
+  bombs = [];
   container.innerHTML = "";
 }

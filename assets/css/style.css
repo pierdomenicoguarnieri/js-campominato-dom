@@ -50,6 +50,10 @@ body{
   aspect-ratio: 1 / 1;
   border: 1px solid white;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .box.lvlsimple{
@@ -74,4 +78,8 @@ body{
 
 .box.clicked{
   background-color: dodgerblue;
+}
+
+.box.bomb{
+  background-color: darkred;
 }
