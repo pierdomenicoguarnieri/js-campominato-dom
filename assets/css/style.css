@@ -75,7 +75,7 @@ footer span{
 .container{
   width: 600px;
   aspect-ratio: 1/1;
-  background-color: transparent;
+  background-color: darkgreen;
   opacity: 0;
   position: relative;
 }
@@ -91,12 +91,12 @@ footer span{
 
 .container .box{
   aspect-ratio: 1 / 1;
-  border: 1px solid black;
+  border: 1px solid white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: white;
   position: relative;
 }
 
@@ -121,7 +121,7 @@ footer span{
 }
 
 .box.clicked{
-  background-color: dodgerblue;
+  background-color: teal;
 }
 
 .box.bomb{
