@@ -136,15 +136,29 @@ function clickHandler(box, bombs, limit){
   }
 }
 
-function gameEnd(box, bombs, limit){
-  const boxCollection = document.querySelectorAll(".box");
-  for(let j = 0; j < bombs.length; j++){
-    for(let i = 0; i < limit; i++){
-      if(bombs[j] === parseInt(boxCollection[i].getAttribute("tagRandomNumber"))){
-        boxCollection[i].classList.add("bomb");
+function gameEnd(box, bombs, limit, boxCollection, flag){
+  const overlay = document.createElement("div");
+  overlay.className = "overlay";
+  container.appendChild(overlay);
+  let message = "";
+  if(flag){
+    message =`
+    Hai vinto! Hai ottenuto ${points} punti su ${boxCollection.length - bombs.length}
+    `
+  }else{
+    for(let j = 0; j < bombs.length; j++){
+      for(let i = 0; i < limit; i++){
+        if(bombs[j] === parseInt(boxCollection[i].getAttribute("tagRandomNumber"))){
+          boxCollection[i].classList.add("bomb");
+        }
       }
     }
+
+    message =`
+    Hai perso! Hai ottenuto ${points} punti su ${boxCollection.length - bombs.length}
+    `
   }
+  output.innerHTML = message;
 }
 
 function reset(array){
