@@ -43,7 +43,7 @@ function generatePlayArea(){
   }while(blackList.length !== boxNumber)
   
   for(let i = 0; i < boxNumber; i++){
-    const box = createElement(blackList[i], parseInt(select.value), bombs);
+    const box = createElement(blackList[i], parseInt(select.value), bombs, boxNumber);
     container.appendChild(box);
   }
 
@@ -61,7 +61,7 @@ function generatePlayArea(){
  * @param {number} lvl 
  * @returns element
  */
-function createElement(randomNumber, lvl, bombs){
+function createElement(randomNumber, lvl, bombs, limit){
   const box = document.createElement("div");
   box.className = "box";
   switch (lvl){
@@ -77,12 +77,11 @@ function createElement(randomNumber, lvl, bombs){
       box.classList.add("lvlhard");
     break;
   }
-  box._tagRandomNumber = randomNumber;
+  box.setAttribute("tagRandomNumber", randomNumber);
 
-  box.innerHTML =`${box._tagRandomNumber}`
+  box.innerHTML =`${box.getAttribute("tagRandomNumber")}`
   box.addEventListener("click", function(){
-    console.log(box._tagRandomNumber);
-    clickHandler(box, bombs);
+    clickHandler(box, bombs, limit);
   })
   return box;
 }
@@ -121,13 +120,24 @@ function createBomb(limit){
     }
 }
 
-function clickHandler(box, bombs){
-  if(bombs.includes(box._tagRandomNumber)){
-    gameEnd()
+function clickHandler(box, bombs, limit){
+  if(bombs.includes(parseInt(box.getAttribute("tagRandomNumber")))){
+    gameEnd(box, bombs, limit);
   }else{
     box.classList.add("clicked");
     points++;
     box.removeEventListener("click", function(){});
+  }
+}
+
+function gameEnd(box, bombs, limit){
+  const boxCollection = document.querySelectorAll(".box");
+  for(let j = 0; j < bombs.length; j++){
+    for(let i = 0; i < limit; i++){
+      if(bombs[j] === parseInt(boxCollection[i].getAttribute("tagRandomNumber"))){
+        boxCollection[i].classList.add("bomb");
+      }
+    }
   }
 }
 
