@@ -121,9 +121,15 @@ function createBomb(limit){
 }
 
 function clickHandler(box, bombs, limit){
+  const boxCollection = document.querySelectorAll(".box");
   if(bombs.includes(parseInt(box.getAttribute("tagRandomNumber")))){
-    gameEnd(box, bombs, limit);
+    gameEnd(box, bombs, limit,boxCollection, false);
+  }else if(points === boxCollection.length - bombs.length){
+    gameEnd(box, bombs, limit,boxCollection, true)
   }else{
+    const classArray = box.className;
+    if(!classArray.includes("clicked")) points++;
+    console.log(points);
     box.classList.add("clicked");
     points++;
     box.removeEventListener("click", function(){});
