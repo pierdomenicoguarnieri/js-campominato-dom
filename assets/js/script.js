@@ -4,6 +4,8 @@ const select = document.getElementById("select");
 
 const container = document.querySelector(".container");
 
+const output = document.getElementById("output");
+
 const blackList = [];
 
 let bombs = [];

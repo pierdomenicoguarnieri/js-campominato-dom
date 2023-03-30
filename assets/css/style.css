@@ -44,6 +44,16 @@ body{
   aspect-ratio: 1/1;
   background-color: darkslategray;
   opacity: 0;
+  position: relative;
+}
+
+.container .overlay{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .container .box{
@@ -54,6 +64,7 @@ body{
   align-items: center;
   justify-content: center;
   color: white;
+  position: relative;
 }
 
 .box.lvlsimple{
@@ -82,4 +93,9 @@ body{
 
 .box.bomb{
   background-color: darkred;
+}
+
+#output{
+  padding-top: 30px;
+  font-size: 2.5rem;
 }
