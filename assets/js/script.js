@@ -10,6 +10,8 @@ let bombs = [];
 
 let randomNumber;
 
+let points = 0;
+
 btnPlay.addEventListener("click", generatePlayArea)
 
 function generatePlayArea(){
@@ -41,7 +43,7 @@ function generatePlayArea(){
   }while(blackList.length !== boxNumber)
   
   for(let i = 0; i < boxNumber; i++){
-    const box = createElement(blackList[i], parseInt(select.value));
+    const box = createElement(blackList[i], parseInt(select.value), bombs);
     container.appendChild(box);
   }
 
@@ -59,7 +61,7 @@ function generatePlayArea(){
  * @param {number} lvl 
  * @returns element
  */
-function createElement(randomNumber, lvl){
+function createElement(randomNumber, lvl, bombs){
   const box = document.createElement("div");
   box.className = "box";
   switch (lvl){
@@ -80,7 +82,7 @@ function createElement(randomNumber, lvl){
   box.innerHTML =`${box._tagRandomNumber}`
   box.addEventListener("click", function(){
     console.log(box._tagRandomNumber);
-    box.classList.toggle("clicked");
+    clickHandler(box, bombs);
   })
   return box;
 }
@@ -119,8 +121,19 @@ function createBomb(limit){
     }
 }
 
+function clickHandler(box, bombs){
+  if(bombs.includes(box._tagRandomNumber)){
+    gameEnd()
+  }else{
+    box.classList.add("clicked");
+    points++;
+    box.removeEventListener("click", function(){});
+  }
+}
+
 function reset(array){
   array.splice(0,array.length);
   bombs = [];
+  points = 0;
   container.innerHTML = "";
 }
